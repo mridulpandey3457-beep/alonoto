@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Alonoto - Learn Smarter</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f9ff;
+}
+
+.navbar{
+background:#0d6efd;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.menu{
+font-size:16px;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+background:white;
+}
+
+.hero h1{
+font-size:40px;
+color:#0d6efd;
+}
+
+.hero p{
+font-size:18px;
+color:#555;
+}
+
+.btn{
+padding:12px 22px;
+border:none;
+border-radius:8px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.blue{
+background:#0d6efd;
+color:white;
+}
+
+.green{
+background:#28a745;
+color:white;
+}.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:20px;
+}
+
+.card{
+background:white;
+width:200px;
+margin:10px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+font-size:18px;
+font-weight:bold;
+}
+
+footer{
+background:#0d6efd;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">📚 Alonoto</div>
+
+<div class="menu">
+Home | Notes | AI
+</div>
+
+</div>
+<button onclick="startVoiceSearch()"
+style="padding:12px 18px;background:#0d6efd;color:white;border:none;border-radius:10px;margin-left:10px;">
+🎤 Mic
+</button>
+<div class="hero">
+<br>
+
+<input
+id="searchInput"
+type="text"
+placeholder="🔍 Search Notes..."
+style="
+width:80%;
+max-width:400px;
+padding:12px;
+border-radius:10px;
+border:2px solid #0d6efd;
+font-size:16px;
+margin-bottom:20px;
+">
+<h1>Alonoto</h1>
+
+<p>Learn Smarter. Score Higher.</p>
+
+<button class="btn blue">
+Start Learning
+</button>
+
+<button class="btn green" onclick="document.getElementById('chatBox').style.display='block'">
+Ask AI Doubt Solver
+</button>
+<div id="chatBox" style="display:none; margin-top:20px; background:white; padding:15px; border-radius:10px;">
+<h3>🤖 AI Doubt Solver</h3>
+<div id="chatMessages" style="height:180px;overflow-y:auto;border:1px solid #ccc;padding:10px;margin-bottom:10px;background:#f8f8f8;"></div>
+<input type="text" id="userInput" placeholder="Apna doubt likho..." style="width:90%;padding:10px;">
+<button class="btn blue" onclick="sendDoubt()">Send</button>
+</div>
+<div class="container">
+
+<div class="card">📘 Accountancy</div>
+
+<div class="card">📗 Business Studies</div>
+
+<div class="card">📙 Economics</div>
+
+<div class="card">
+<h3>🏃 Physical Education</h3>
+
+<button class="btn blue">📥 Download PDF</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+
+
+
+
+<div class="card">
+<h3>🎬 VN Editor (Android)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>🎬 Vita (Android)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>✨ Alight Motion (Android)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>🎥 KineMaster (Android)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>💻 Filmora (PC + Mobile)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>💻 Adobe Premiere Pro (PC)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+<div class="card">
+<h3>💻 DaVinci Resolve (PC)</h3>
+
+<button class="btn blue">📥 Download</button>
+
+<br><br>
+
+<button class="btn blue">🎥 Free Course</button>
+
+</div>
+
+</div>
+<h2 style="text-align:center;color:#0d6efd;">
+Latest Notes
+
+</h2>
+
+<div class="container">
+
+<div class="card">
+📘 Accountancy Notes
+<br><br>
+<button class="btn blue">📥 Download PDF</button>
+</div>
+
+<div class="card">
+📗 Business Studies Notes
+<br><br>
+<button class="btn blue">📥 Download PDF</button>
+</div>
+
+<div class="card">
+📙 Economics Notes
+<br><br>
+<button class="btn blue">📥 Download PDF</button>
+</div>
+
+<div class="card">
+🏃 Physical Education Notes
+<br><br>
+<button class="btn blue">📥 Download PDF</button>
+</div>
+
+</div>
+<hr>
+
+<div style="text-align:center;padding:30px;background:#fff;border-radius:15px;margin:20px;box-shadow:0 0 10px rgba(0,0,0,0.15);">
+
+<h2 style="color:#0d6efd;">👑 Founder & CEO</h2>
+
+<h3>Mridul Pandey</h3>
+
+<p>
+Founder & CEO of <b>Alonoto</b><br>
+Helping Commerce students with quality notes, PDFs and study resources.
+</p>
+
+</div>
+<h2 style="text-align:center;color:#0d6efd;">💬 Student Comments</h2>
+
+<div style="width:90%;max-width:600px;margin:20px auto;">
+<input type="text" placeholder="Write your comment..."
+style="width:100%;padding:10px;border:2px solid #0d6efd;border-radius:8px;">
+
+<br><br>
+
+<button class="btn blue">Post Comment</button>
+
+<div style="margin-top:20px;padding:10px;background:#f8f8f8;border-radius:8px;">
+<b>Sample Student:</b> Amazing notes! Thank you Alonoto. ❤️
+</div>
+</div>
+<footer>
+
+© 2026 Alonoto | Made for Students 💙
+</div>
+</footer>
+<!-- AI Chat Button -->
+<button id="chatBtn" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;border:none;background:#2563eb;color:white;font-size:28px;cursor:pointer;">
+💬
+</button>
+
+<!-- AI Chat Box -->
+<div id="chatBox" style="display:none;position:fixed;bottom:90px;right:20px;width:300px;height:400px;background:#1e293b;color:white;border-radius:15px;padding:10px;box-shadow:0 0 10px rgba(0,0,0,.5);">
+<h3>🤖 AI Doubt Chat</h3>
+
+<div id="messages" style="height:280px;overflow-y:auto;margin-bottom:10px;"></div>
+
+<input id="userInput" type="text" placeholder="Ask your doubt..."
+style="width:100%;padding:10px;border:none;border-radius:8px;">
+
+<button onclick="sendMessage()" style="margin-top:10px;width:100%;">Send</button>
+</div>
+
+<script>
+document.getElementById("chatBtn").onclick=function(){
+let box=document.getElementById("chatBox");
+box.style.display=(box.style.display==="block")?"none":"block";
+}
+
+function sendMessage(){
+let input=document.getElementById("userInput");
+let messages=document.getElementById("messages");
+
+if(input.value.trim()=="") return;
+
+messages.innerHTML += "<p><b>You:</b> "+input.value+"</p>";
+messages.innerHTML += "<p><b>AI:</b> AI feature will be connected soon.</p>";
+
+input.value="";
+messages.scrollTop=messages.scrollHeight;
+}
+</script>
+<script src="game.js"></script>
+<script>
+function startVoiceSearch() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Voice Search is not supported on this browser.");
+    return;
+  }
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = "en-IN";
+
+  recognition.onresult = function(event) {
+    const text = event.results[0][0].transcript;
+    const search = document.getElementById("searchInput");
+
+    search.value = text;
+
+    // Search ko automatically
+  };
+
+  recognition.start();
+}
+</script>
+</body>
+<!-- updated -->
+</html>
+
