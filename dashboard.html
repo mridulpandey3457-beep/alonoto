@@ -1,15 +1,132 @@
-<a href="dashboard.html">
-  <button style="
-    width:220px;
-    padding:15px;
-    margin:15px auto;
-    display:block;
-    background:#ff9800;
-    color:white;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;">
-    📤 Upload Notes
-  </button>
-</a>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alonoto Dashboard</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
+padding:20px;
+}
+.box{
+max-width:500px;
+margin:auto;
+background:#222;
+padding:20px;
+border-radius:12px;
+}
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+background:#ff9800;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🎉 Welcome Mridul</h2>
+
+<input id="title" type="text" placeholder="Notes Title">
+
+<input id="pdf" type="file" accept=".pdf">
+
+<button id="uploadBtn" type="button">📤 Upload Note</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getStorage,
+ref,
+uploadBytes,
+getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
+import {
+getFirestore,
+collection,
+addDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCuGHfO1jgOxlRZO1eeWAO3OQDPTQ7fnDA",
+  authDomain: "alonoto-664b1.firebaseapp.com",
+  projectId: "alonoto-664b1",
+  storageBucket: "alonoto-664b1.firebasestorage.app",
+  messagingSenderId: "176270665647",
+  appId: "1:176270665647:web:894b3591114b470e06f15a"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const storage = getStorage(app);
+const db = getFirestore(app);
+
+async function uploadNote(){
+alert("Step 3");
+const title=document.getElementById("title").value;
+const file=document.getElementById("pdf").files[0];
+
+if(!title || !file){
+alert("Title aur PDF select karo");
+return;
+}
+
+const fileRef=ref(storage,"notes/"+file.name);
+
+await uploadBytes(fileRef,file);
+alert("Step 4");
+const url=await getDownloadURL(fileRef);
+alert("Step 5");
+await addDoc(collection(db,"notes"),{
+title:title,
+pdf:url,
+time:Date.now()
+});
+
+alert("✅ Upload Successful!");
+
+}
+
+document.getElementById("uploadBtn").onclick = async function () {
+    alert("Step 1");
+
+    const title = document.getElementById("title").value;
+    const file = document.getElementById("pdf").files[0];
+
+    if (!title || !file) {
+        alert("Title aur PDF select karo");
+        return;
+    }
+
+    alert("Step 2");
+
+    uploadNote();
+};
+</script>
+
+</body>
+</html>
